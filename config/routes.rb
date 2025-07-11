@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      post 'send_excel', to: 'excel_mailer#send_excel'
+      post 'send_json', to: 'json_mailer#send_json'
     end
   end
 end
