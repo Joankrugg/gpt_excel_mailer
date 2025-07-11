@@ -6,20 +6,31 @@ class Api::V1::JsonMailerController < ApplicationController
     render json: {
       openapi: "3.1.0",
       info: {
-        title: "Mailer API - Millesime",
+        title: "Mailer API",
         version: "1.0.0",
-        description: "Envoie une pièce jointe JSON par email depuis un agent GPT."
+        description: "Permet à un agent GPT d'envoyer un JSON par mail.",
+        termsOfService: "https://millesime-collection.com/politique-confidentialite/",
+        contact: {
+          name: "Millésime",
+          email: "p.chambon@millesime.life"
+        },
+        license: {
+          name: "MIT"
+        }
       },
       servers: [
         {
-          url: "https://mailer-api-o3zn.onrender.com" # Ton URL Render à jour
+          url: "https://mailer-api.onrender.com"
         }
       ],
+      "x-policy": {
+        url: "https://millesime-collection.com/politique-confidentialite/"
+      },
       paths: {
         "/api/v1/send_json": {
           post: {
             operationId: "sendJsonByEmail",
-            summary: "Envoie un JSON en pièce jointe par mail",
+            summary: "Envoie un JSON par e-mail",
             parameters: [],
             requestBody: {
               required: true,
@@ -28,19 +39,8 @@ class Api::V1::JsonMailerController < ApplicationController
                   schema: {
                     type: "object",
                     properties: {
-                      to: {
-                        type: "string",
-                        description: "Adresse email du destinataire (ex. millesimelife@gmail.com)",
-                        example: "millesimelife@gmail.com"
-                      },
-                      json_data: {
-                        type: "object",
-                        description: "Contenu du JSON à envoyer",
-                        example: {
-                          nom: "Philippe",
-                          projet: "GPT Mailer"
-                        }
-                      }
+                      to: { type: "string", description: "Adresse email du destinataire" },
+                      json_data: { type: "object", description: "Contenu JSON à envoyer" }
                     },
                     required: ["to", "json_data"]
                   }
@@ -48,18 +48,15 @@ class Api::V1::JsonMailerController < ApplicationController
               }
             },
             responses: {
-              "200": {
-                description: "L'email a bien été envoyé avec le JSON en pièce jointe."
-              },
-              "401": {
-                description: "Clé API invalide."
-              }
+              "200": { description: "Email envoyé" },
+              "401": { description: "Clé API invalide" }
             }
           }
         }
       }
     }
   end
+
 
 
 
