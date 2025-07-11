@@ -1,3 +1,4 @@
+# app/controllers/api/v1/json_mailer_controller.rb
 class Api::V1::JsonMailerController < ApplicationController
   before_action :authenticate_api_key
 
