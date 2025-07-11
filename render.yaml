@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: mailer-api
+    env: ruby
+    buildCommand: "bundle install && bundle exec rake db:migrate"
+    startCommand: "bundle exec rails s -p $PORT"
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: GPT_API_KEY
+        sync: false
+    plan: free
