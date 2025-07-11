@@ -20,7 +20,7 @@ class Api::V1::JsonMailerController < ApplicationController
       },
       servers: [
         {
-          url: "https://mailer-api.onrender.com"
+          url: "https://mailer-api-o3zn.onrender.com"
         }
       ],
       "x-policy": {
