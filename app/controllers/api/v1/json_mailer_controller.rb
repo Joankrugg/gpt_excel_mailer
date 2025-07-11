@@ -4,7 +4,7 @@ class Api::V1::JsonMailerController < ApplicationController
 
   def openapi
     render json: {
-      openapi: "3.0.0",
+      openapi: "3.1.0",
       info: {
         title: "Mailer API - Millesime",
         version: "1.0.0",
