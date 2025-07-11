@@ -1,6 +1,14 @@
 # app/controllers/api/v1/json_mailer_controller.rb
 class Api::V1::JsonMailerController < ApplicationController
   before_action :authenticate_api_key, except: [:openapi]
+  
+  def send_json
+    to = params[:to]
+    json_data = params[:json_data]
+
+    JsonMailer.with(to: to, json_data: json_data).send_json.deliver_now
+    render json: { status: 'ok', message: "JSON envoyé à #{to}" }
+  end
 
   def openapi
     render json: {
