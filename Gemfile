@@ -19,6 +19,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
+gem "pg"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -46,6 +47,6 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-gem "axlsx_rails", "~> 0.6.1"
+gem "caxlsx_rails", "~> 0.6.1"
 gem "mail", "~> 2.8"
 gem "dotenv-rails", "~> 3.1"
