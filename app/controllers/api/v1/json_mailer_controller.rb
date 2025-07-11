@@ -19,7 +19,7 @@ class Api::V1::JsonMailerController < ApplicationController
         description: "Permet à un agent GPT d'envoyer un JSON par mail."
       },
       servers: [
-        { url: "https://mailer-api.onrender.com" }
+        { url: "https://mailer-api-o3zn.onrender.com" }
       ],
       paths: {
         "/api/v1/send_json": {
